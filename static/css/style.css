@@ -1,0 +1,652 @@
+/* --- CONFIGURAÇÕES GERAIS E VARIÁVEIS --- */
+:root {
+    --cor-preto: #121212;
+    --cor-dourado: #D4AF37;
+    --cor-dourado-hover: #EACD6A;
+    --cor-texto: #f0f0f0;
+    --cor-fundo: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--cor-dourado);
+    text-decoration: none;
+}
+
+/* --- CABEÇALHO (HEADER) --- */
+header {
+    background-color: var(--cor-preto);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--cor-dourado);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { /* Estilo do container do logo (imagem + telefone) */
+    display: flex; /* Para alinhar imagem e telefone */
+    align-items: center;
+    gap: 10px; /* Espaço entre a imagem e o telefone */
+    font-size: 1.5rem; /* Isso pode ser ajustado para o telefone */
+    font-weight: 700;
+    color: var(--cor-texto);
+    text-decoration: none; /* Garante que o link não tenha sublinhado padrão */
+}
+
+.logo-img { /* Estilo da imagem do logo */
+    height: 60px; /* Ajuste a altura conforme necessário */
+    width: auto; /* Mantém a proporção */
+    vertical-align: middle; /* Alinha a imagem verticalmente */
+}
+
+.logo-phone { /* Estilo do número de telefone */
+    font-size: 1.1rem; /* Ajuste o tamanho da fonte do telefone */
+    color: var(--cor-dourado); /* Cor dourada para o telefone */
+    white-space: nowrap; /* Impede que o número quebre a linha */
+    margin-left: 10px; /* Espaçamento extra à esquerda do telefone */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li {
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    color: var(--cor-texto);
+    font-weight: 400;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: var(--cor-dourado);
+    color: var(--cor-preto);
+}
+
+.btn-orcamento {
+    background-color: var(--cor-dourado);
+    color: var(--cor-preto) !important;
+    font-weight: 700;
+}
+.btn-orcamento:hover {
+    background-color: var(--cor-dourado-hover) !important;
+}
+
+/* --- PÁGINA INICIAL --- */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1500x800.png/121212/D4AF37?text=Imagem+de+Fundo') no-repeat center center/cover;
+    height: 40vh; /* Aumentei a altura para ter mais espaço para a logo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative; /* Importante para posicionar elementos internos se necessário */
+}
+
+.hero-content { /* Novo estilo para centralizar o conteúdo do hero */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ocupa a altura total do hero */
+}
+
+.logo-hero-wrapper {
+    position: relative;
+    width: 800px; /* Largura do container do logo, ajuste conforme o tamanho da sua imagem */
+    height: auto; /* A altura será ajustada automaticamente pela imagem */
+    margin-bottom: 2rem; /* Espaço entre o logo e o título */
+    overflow: hidden; /* Importante para o efeito de brilho */
+    border-radius: 5px; /* Adiciona um pequeno arredondamento */
+}
+
+.hero-logo-img {
+    width: 100%; /* Faz a imagem ocupar 100% do container */
+    height: auto;
+    display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+/* --- ANIMAÇÃO DE BRILHO (SHIMMER EFFECT) --- */
+.logo-hero-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%; /* Inicia o brilho fora da esquerda */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 70%,
+                rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-20deg); /* Inclina o brilho */
+    animation: shimmer 2s infinite linear; /* Aplica a animação */
+    animation-delay: 2s; /* Atraso antes da primeira animação para não ser imediata */
+}
+
+@keyframes shimmer {
+    0% {
+        left: -75%;
+    }
+    100% {
+        left: 100%; /* Move o brilho para fora da direita */
+    }
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--cor-dourado); /* Dourado para o título do hero */
+}
+.hero p {
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+}
+
+.sobre {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.sobre h2 {
+    font-size: 2.5rem;
+    color: var(--cor-dourado);
+    margin-bottom: 1.5rem;
+}
+
+/* --- PÁGINA DE PORTFÓLIOS --- */
+.portfolio-container {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.portfolio-container h2 {
+    font-size: 2.5rem;
+    color: var(--cor-dourado);
+    margin-bottom: 1rem;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.portfolio-item {
+    background-color: var(--cor-preto);
+    border: 2px solid var(--cor-dourado);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--cor-dourado-hover);
+}
+
+.portfolio-item h3 {
+    color: var(--cor-texto);
+    font-size: 1.8rem;
+}
+
+/* --- GALERIA DE FOTOS --- */
+.galeria-container {
+    padding: 4rem 0;
+    text-align: center;
+}
+.galeria-container h2 {
+    font-size: 2.5rem;
+    color: var(--cor-dourado);
+    margin-bottom: 2rem;
+}
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid var(--cor-dourado);
+}
+.btn-voltar {
+    display: inline-block;
+    margin-top: 3rem;
+    background: var(--cor-dourado);
+    color: var(--cor-preto);
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn-voltar:hover {
+    background: var(--cor-dourado-hover);
+}
+
+/* --- FORMULÁRIO DE ORÇAMENTO --- */
+.orcamento-container {
+    padding: 4rem 0;
+    max-width: 800px;
+}
+.orcamento-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--cor-dourado);
+    margin-bottom: 2rem;
+}
+.orcamento-form .form-group {
+    margin-bottom: 1.5rem;
+}
+.orcamento-form .form-group-row {
+    display: flex;
+    gap: 1.5rem;
+}
+.orcamento-form .form-group-row .form-group {
+    flex: 1;
+}
+.orcamento-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--cor-dourado);
+}
+.orcamento-form input, .orcamento-form textarea, .orcamento-form select {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--cor-preto);
+    border: 1px solid var(--cor-dourado);
+    color: var(--cor-texto);
+    font-size: 1rem;
+}
+.orcamento-form button {
+    width: 100%;
+    padding: 15px;
+    background: var(--cor-dourado);
+    color: var(--cor-preto);
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.orcamento-form button:hover {
+    background-color: var(--cor-dourado-hover);
+}
+
+/* --- ADMIN --- */
+.admin-container {
+    padding: 4rem 0;
+}
+.admin-container h2 {
+    text-align: center;
+    color: var(--cor-dourado);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+.admin-section {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--cor-dourado);
+}
+.admin-section h3 {
+    margin-bottom: 1.5rem;
+}
+.admin-form, .admin-table {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-table th, .admin-table td {
+    border: 1px solid var(--cor-dourado);
+    padding: 10px;
+    text-align: left;
+}
+.preview-img {
+    width: 100px;
+    height: auto;
+}
+.btn-delete {
+    background-color: #c00;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+.btn-delete:hover {
+    background-color: #e00;
+}
+
+/* --- ALERTAS E MENSAGENS --- */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+.alert-success {
+    background-color: #28a745;
+    color: white;
+}
+.alert-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* --- RODAPÉ --- */
+footer {
+    background-color: var(--cor-preto);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 2px solid var(--cor-dourado);
+}
+
+/* --- PÁGINA QUEM SOMOS --- */
+.quem-somos-container {
+    padding: 4rem 0;
+    max-width: 800px; /* Limita a largura do texto para melhor leitura */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+.quem-somos-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--cor-dourado);
+    margin-bottom: 2rem;
+}
+
+.quem-somos-container h3 {
+    font-size: 1.8rem;
+    color: var(--cor-dourado);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.quem-somos-container ul {
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.quem-somos-container li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- ESTILOS ATUALIZADOS E NOVOS PARA A PÁGINA QUEM SOMOS --- */
+
+.quem-somos-container {
+    padding: 4rem 1rem;
+    max-width: 900px; /* Aumentei um pouco a largura para o novo layout */
+    margin: 0 auto;
+    color: #f0f0f0;
+}
+
+.quem-somos-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--cor-dourado);
+    margin-bottom: 1.5rem;
+}
+
+.quem-somos-container h3 {
+    font-size: 2rem;
+    color: var(--cor-dourado);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--cor-dourado-hover);
+}
+
+.quem-somos-container h4 {
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.quem-somos-container p {
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+.section-divider {
+    height: 1px;
+    background-color: rgba(212, 175, 55, 0.2); /* Dourado com transparência */
+    margin: 2.5rem auto;
+    width: 80%;
+}
+
+/* Grid para os Diferenciais */
+.diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.diferencial-item {
+    background-color: var(--cor-preto);
+    padding: 1.5rem;
+    border: 1px solid #444;
+    border-radius: 5px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.diferencial-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--cor-dourado);
+}
+
+.diferencial-item .icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: var(--cor-dourado);
+}
+
+/* Lista de Valores */
+.valores-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.valores-list li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.valores-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--cor-dourado);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.concluding-text {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-top: 3rem;
+    color: var(--cor-dourado-hover);
+}
+
+/* --- NOVO LAYOUT DE TELA CHEIA PARA A PÁGINA INICIAL --- */
+
+/* Esconde o rodapé apenas na página inicial */
+body:has(.hero-fullscreen) footer {
+    display: none;
+}
+
+.hero-fullscreen {
+    height: 100vh; /* ALTURA PARA TELA CHEIA: 100% da altura da janela */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center;
+    padding: 2rem;
+    /* Fundo mais sofisticado: um gradiente sutil de preto */
+    background: radial-gradient(ellipse at center, #1c1c1c 0%, #000000 70%);
+}
+
+.hero-fullscreen .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Dando mais destaque para a logo */
+.hero-fullscreen .logo-hero-wrapper {
+    width: 600px; /* AUMENTEI O TAMANHO DA LOGO. Ajuste se necessário */
+    max-width: 90%; /* Garante que a logo não fique grande demais em telas pequenas */
+    margin-bottom: 0; /* Remove a margem inferior para aproximar do contato */
+}
+
+/* Estilo para o novo bloco de contato */
+.hero-fullscreen .hero-contact {
+    color: var(--cor-texto);
+    font-size: 1.2rem;
+    margin-top: 1.5rem; /* Espaço entre a logo e o contato */
+    margin-bottom: 2.5rem; /* Espaço entre o contato e o título principal */
+    letter-spacing: 1px;
+}
+
+.hero-fullscreen .hero-contact a {
+    color: var(--cor-dourado); /* Número do telefone em dourado */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.hero-fullscreen .hero-contact a:hover {
+    color: var(--cor-dourado-hover);
+}
+
+/* Ajustes no texto principal */
+.hero-fullscreen .hero-text h1 {
+    font-size: 3.2rem; /* Título um pouco maior */
+    color: var(--cor-dourado);
+    margin-bottom: 1rem;
+}
+
+.hero-fullscreen .hero-text p {
+    font-size: 1.3rem;
+    color: var(--cor-texto);
+}
+
+/* --- ESTILOS RESPONSIVOS (PARA CELULARES E TELAS PEQUENAS) --- */
+@media (max-width: 768px) {
+
+    /* Ajusta o container principal para não colar nas bordas */
+    .container {
+        padding: 0 20px;
+    }
+
+    /* --- AJUSTES NO CABEÇALHO --- */
+    header .container {
+        flex-direction: column; /* Coloca logo e menu um embaixo do outro */
+        gap: 1rem;
+    }
+
+    header nav ul {
+        padding: 0;
+        margin: 0;
+        justify-content: center; /* Centraliza os botões do menu */
+    }
+
+    header nav ul li {
+        margin-left: 10px; /* Reduz o espaçamento entre os botões */
+        margin-right: 10px;
+    }
+
+    /* --- AJUSTES NA PÁGINA INICIAL (HERO) --- */
+    .hero-fullscreen .logo-hero-wrapper {
+        width: 80%; /* Usa porcentagem para a logo se adaptar */
+    }
+
+    .hero-fullscreen .hero-text h1 {
+        font-size: 2.2rem; /* Reduz o tamanho do título principal */
+    }
+
+    .hero-fullscreen .hero-text p {
+        font-size: 1.1rem; /* Reduz o tamanho do subtítulo */
+    }
+
+    /* --- AJUSTES NA PÁGINA DE PORTFÓLIOS --- */
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Força uma única coluna */
+        gap: 1.5rem;
+    }
+
+    .portfolio-item {
+        /* Garante que os botões tenham uma altura razoável */
+        min-height: 150px;
+    }
+
+    /* --- AJUSTES NA GALERIA DE FOTOS --- */
+    .galeria-grid {
+        grid-template-columns: 1fr; /* Uma foto por linha */
+    }
+
+    /* --- AJUSTES NOS FORMULÁRIOS --- */
+    .orcamento-form .form-group-row {
+        flex-direction: column; /* Coloca os campos um embaixo do outro */
+        gap: 0;
+    }
+}
+/* Remove a animação de brilho se preferir um visual mais sóbrio */
+/* Se quiser manter a animação, apenas ignore ou delete este bloco abaixo */
+/*.hero-fullscreen .logo-hero-wrapper::before {
+    display: none; /* Desativa a animação de brilho */
+/*}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ titulo }} - Portfólio{% endblock %}
+
+{% block content %}
+<div class="container galeria-container">
+    <h2>Portfólio: {{ titulo }}</h2>
+
+    {% if fotos %}
+        <div class="galeria-grid">
+            {% for foto in fotos %}
+            <div class="galeria-item">
+                <img src="{{ url_for('static', filename='uploads/' + foto.filename) }}" alt="Foto da categoria {{ titulo }}">
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Ainda não há fotos nesta categoria. Volte em breve!</p>
+    {% endif %}
+
+    <a href="{{ url_for('portfolios') }}" class="btn-voltar">Voltar para Portfólios</a>
+</div>
+{% endblock %}

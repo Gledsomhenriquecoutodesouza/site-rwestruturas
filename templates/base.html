@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>{% block title %}RW Estruturas Metálicas{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="logo">
+    <img src="{{ url_for('static', filename='img/logo_rw.png') }}" alt="RW Estruturas Metálicas Logo" class="logo-img">
+    <span class="logo-phone">(18) 9 9693 5454</span>
+</a>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('portfolios') }}">Portfólios</a></li>
+                    <li><a href="{{ url_for('quem_somos') }}">Quem Somos</a></li>
+                    <li><a href="{{ url_for('orcamento') }}" class="btn-orcamento">Peça um Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 RW Estruturas Metálicas, Portões e Carretas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Painel do Administrador{% endblock %}
+
+{% block content %}
+<div class="container admin-container">
+    <h2>Painel de Administrador</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="admin-section">
+        <h3>Adicionar Nova Foto ao Portfólio</h3>
+        <form method="POST" action="{{ url_for('admin') }}" enctype="multipart/form-data" class="admin-form">
+            <div class="form-group">
+                <label for="categoria">Selecione a Categoria*</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="">Escolha uma categoria...</option>
+                    <option value="portoes">Portões</option>
+                    <option value="carretas">Carretas</option>
+                    <option value="estruturas-metalicas">Estruturas Metálicas</option>
+                    <option value="moveis">Móveis</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="foto">Selecione a Imagem*</label>
+                <input type="file" id="foto" name="foto" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Adicionar Foto</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="admin-section">
+        <h3>Fotos Cadastradas</h3>
+        {% if fotos %}
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Preview</th>
+                        <th>Categoria</th>
+                        <th>Arquivo</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for foto in fotos %}
+                    <tr>
+                        <td><img src="{{ url_for('static', filename='uploads/' + foto.filename) }}" alt="" class="preview-img"></td>
+                        <td>{{ foto.categoria.replace('-', ' ').title() }}</td>
+                        <td>{{ foto.filename }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_foto', foto_id=foto.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar esta foto?');">
+                                <button type="submit" class="btn-delete">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhuma foto cadastrada ainda.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

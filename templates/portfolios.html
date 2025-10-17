@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Portfólios - RW Estruturas Metálicas{% endblock %}
+
+{% block content %}
+<div class="container portfolio-container">
+    <h2>Nossos Trabalhos</h2>
+    <p>Navegue por nossas categorias para ver exemplos de projetos que já realizamos.</p>
+    <div class="portfolio-grid">
+        <a href="{{ url_for('portfolio_categoria', categoria='portoes') }}" class="portfolio-item">
+            <div class="item-content">
+                <h3>Portões</h3>
+            </div>
+        </a>
+        <a href="{{ url_for('portfolio_categoria', categoria='carretas') }}" class="portfolio-item">
+            <div class="item-content">
+                <h3>Carretas</h3>
+            </div>
+        </a>
+        <a href="{{ url_for('portfolio_categoria', categoria='estruturas-metalicas') }}" class="portfolio-item">
+            <div class="item-content">
+                <h3>Estruturas Metálicas</h3>
+            </div>
+        </a>
+        <a href="{{ url_for('portfolio_categoria', categoria='moveis') }}" class="portfolio-item">
+            <div class="item-content">
+                <h3>Móveis</h3>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Peça um Orçamento - RW Estruturas Metálicas{% endblock %}
+
+{% block content %}
+<div class="container orcamento-container">
+    <h2>Solicite seu Orçamento</h2>
+    <p>Preencha o formulário abaixo com o máximo de detalhes possível e nossa equipe entrará em contato.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('orcamento') }}" enctype="multipart/form-data" class="orcamento-form">
+        <div class="form-group">
+            <label for="nome">Nome Completo ou Razão Social*</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group-row">
+            <div class="form-group">
+                <label for="email">E-mail*</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone*</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="empresa">Nome da Empresa (se aplicável)</label>
+            <input type="text" id="empresa" name="empresa">
+        </div>
+        <div class="form-group">
+            <label for="tipo_servico">Tipo de Serviço ou Produto*</label>
+            <select id="tipo_servico" name="tipo_servico" required>
+                <option value="">Selecione...</option>
+                <option value="portao">Portão</option>
+                <option value="carreta">Carreta</option>
+                <option value="estrutura">Estrutura Metálica</option>
+                <option value="movel">Móvel de Aço</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição Detalhada do Projeto*</label>
+            <textarea id="descricao" name="descricao" rows="6" required></textarea>
+        </div>
+        <div class="form-group-row">
+            <div class="form-group">
+                <label for="quantidade">Quantidade ou Escopo</label>
+                <input type="text" id="quantidade" name="quantidade">
+            </div>
+            <div class="form-group">
+                <label for="orcamento_estimado">Estimativa de Orçamento (Opcional)</label>
+                <input type="text" id="orcamento_estimado" name="orcamento_estimado">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="anexos">Anexar Arquivos (fotos, referências)</label>
+            <input type="file" id="anexos" name="anexos" multiple>
+        </div>
+        <div class="form-group">
+            <button type="submit">Enviar Pedido</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
