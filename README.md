@@ -20,4 +20,4 @@ As a Software Engineering student, I am focused on improving this system by:
 3. Preparing for international standards, aiming for opportunities in Germany and Ireland.
 
 ---
-*Developed by [Teu Nome]*
+*Developed by Gledsom henrique couto de souza*
